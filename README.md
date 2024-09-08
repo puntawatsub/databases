@@ -1,7 +1,7 @@
 # databases
 This repository is for Metropolia's AMK IT Relational Database course.
 
-## Week 3 Exercise 1: 
+## Week 3 Exercise 2: 
 ### Question 1
 ```
 SELECT * FROM goal;
@@ -56,7 +56,7 @@ SELECT screen_name, co2_budget, co2_consumed, @co2_left:=co2_budget-co2_consumed
 #### Notes: 
 ¹The results are too long to be displayed in one screenshot.
 
-## Week 3 Exercise 2:
+## Week 3 Exercise 3:
 ### Question 1 ¹
 ```
 SELECT country.name AS "country name", airport.name AS "airport name" FROM country INNER JOIN airport on airport.iso_country=country.iso_country WHERE country.name="Iceland";
@@ -111,3 +111,31 @@ SELECT country.name FROM airport INNER JOIN country ON airport.iso_country=count
 
 #### Notes: 
 ¹The results are too long to be displayed in one screenshot.
+
+### Week 4 Exercise 4
+
+### Question 1
+```
+SELECT country.name as "country name", airport.name as "airport name" FROM country INNER JOIN airport WHERE airport.iso_country=country.iso_country AND airport.scheduled_service="YES" AND country.name="Finland";
+```
+![screenshot](screenshots/week4-1)
+### Question 2
+```
+SELECT screen_name, airport.name as name FROM game INNER JOIN airport ON game.location=airport.ident;
+```
+![screenshot](screenshots/week4-2)
+### Question 3
+```
+SELECT screen_name, country.name as name FROM game INNER JOIN airport ON game.location=airport.ident, country WHERE country.iso_country=airport.iso_country;
+```
+![screenshot](screenshots/week4-3)
+### Question 4
+```
+SELECT airport.name, game.screen_name FROM airport LEFT JOIN game ON game.location=airport.ident WHERE LOWER(airport.name) LIKE "%hels%";
+```
+![screenshot](screenshots/week4-4)
+### Question 5
+```
+SELECT goal.name, game.screen_name FROM goal LEFT JOIN goal_reached ON goal.id=goal_reached.goal_id LEFT JOIN game ON game.id=goal_reached.game_id;
+```
+![screenshot](screenshots/week4-5)
