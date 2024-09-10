@@ -112,7 +112,7 @@ SELECT country.name FROM airport INNER JOIN country ON airport.iso_country=count
 #### Notes: 
 ¹The results are too long to be displayed in one screenshot.
 
-### Week 4 Exercise 4
+## Week 4 Exercise 4
 
 ### Question 1
 ```
@@ -139,3 +139,41 @@ SELECT airport.name, game.screen_name FROM airport LEFT JOIN game ON game.locati
 SELECT goal.name, game.screen_name FROM goal LEFT JOIN goal_reached ON goal.id=goal_reached.goal_id LEFT JOIN game ON game.id=goal_reached.game_id;
 ```
 ![screenshot](screenshots/week4-5)
+
+## Week 4 Exercise 5
+
+### Question 1
+```
+SELECT name FROM country WHERE iso_country IN (
+    SELECT iso_country FROM airport WHERE name LIKE "Satsuma%"
+);
+```
+![screenshot](screenshots/week4-2-1)
+### Question 2
+```
+SELECT name FROM airport WHERE ident IN(
+    SELECT airport.ident FROM airport, country WHERE airport.iso_country=country.iso_country AND country.name="Monaco"
+);
+```
+![screenshot](screenshots/week4-2-2)
+### Question 3
+```
+SELECT screen_name FROM game WHERE id IN (
+    SELECT DISTINCT game_id AS id FROM goal_reached, goal WHERE goal.name="CLOUDS" AND goal.id=goal_reached.goal_id
+);
+```
+![screenshot](screenshots/week4-2-3)
+### Question 4
+```
+SELECT name FROM country WHERE iso_country NOT IN (
+    SELECT DISTINCT iso_country FROM airport
+);
+```
+![screenshot](screenshots/week4-2-4)
+### Question 5
+```
+SELECT name FROM goal WHERE id NOT IN (
+    SELECT goal_id FROM goal_reached, game WHERE goal_reached.game_id=game.id
+);
+```
+![screenshot](screenshots/week4-2-5)
