@@ -177,3 +177,63 @@ SELECT name FROM goal WHERE id NOT IN (
 );
 ```
 ![screenshot](screenshots/week4-2-5)
+
+## Week 5 Exercise 6
+### Question 1
+```
+SELECT max(elevation_ft) FROM airport;
+```
+![screenshot](screenshots/week5-1)
+### Question 2
+```
+SELECT continent, count(*) FROM country GROUP BY continent;
+```
+![screenshot](screenshots/week5-2)
+### Question 3
+```
+SELECT screen_name, count(*) FROM goal_reached INNER JOIN game ON game.id = goal_reached.game_id GROUP BY screen_name;
+```
+![screenshot](screenshots/week5-3)
+### Question 4
+```
+SELECT screen_name FROM game WHERE co2_consumed IN (
+    SELECT min(co2_consumed) FROM game
+);
+```
+![screenshot](screenshots/week5-4)
+### Question 5
+```
+SELECT country.name, count(*) FROM country INNER JOIN airport ON airport.iso_country = country.iso_country GROUP BY country.name ORDER BY count(*) DESC LIMIT 50;
+```
+![screenshot](screenshots/week5-5)
+### Question 6
+```
+SELECT country.name FROM country INNER JOIN airport ON airport.iso_country = country.iso_country GROUP BY country.name having count(*) > 1000;
+```
+![screenshot](screenshots/week5-6)
+### Question 7
+```
+SELECT name FROM airport WHERE elevation_ft IN (
+    SELECT max(elevation_ft) FROM airport
+);
+```
+![screenshot](screenshots/week5-7)
+### Question 8
+```
+SELECT country.name FROM airport, country WHERE country.iso_country = airport.iso_country AND elevation_ft IN (
+    SELECT max(elevation_ft) FROM airport
+);
+```
+![screenshot](screenshots/week5-8)
+### Question 9
+```
+SELECT count(*) FROM goal_reached INNER JOIN game ON goal_reached.game_id = game.id WHERE screen_name="Vesa";
+```
+![screenshot](screenshots/week5-9)
+### Question 10
+```
+SELECT name FROM airport WHERE latitude_deg IN (
+    SELECT min(latitude_deg) FROM airport
+);
+```
+![screenshot](screenshots/week5-10)
