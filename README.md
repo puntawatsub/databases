@@ -1,6 +1,9 @@
 # databases
 This repository is for Metropolia's AMK IT Relational Database course.
 
+## Week 1 Exercise 1:
+![screenshot](screenshots/week1)
+
 ## Week 3 Exercise 2: 
 ### Question 1
 ```
@@ -237,3 +240,24 @@ SELECT name FROM airport WHERE latitude_deg IN (
 );
 ```
 ![screenshot](screenshots/week5-10)
+
+### Week 5 Exercise 7
+### Question 1
+```
+UPDATE game
+SET co2_consumed = co2_consumed + 500, location = (SELECT ident FROM airport WHERE name = "Nottingham Airport")
+WHERE screen_name = "Vesa";
+```
+![screenshot](screenshots/5-1-2)
+### Question 2
+```
+goal_reached
+```
+### Question 3
+```
+DELETE FROM goal_reached;
+```
+### Question 4
+```
+DELETE FROM game;
+```
